@@ -43,6 +43,7 @@ set :markdown, :fenced_code_blocks => true,
 
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
+activate :automatic_alt_tags
 
 
 ###
@@ -168,11 +169,11 @@ configure :build do
 end
 
 ###
-# Deployment settings - Github pages (http://tgdev.github.com/)
+# Deployment settings - Github user page (http://tgdev.github.com/)
 ###
 activate :deploy do |deploy|
   deploy.method = :git
   deploy.build_before = true # default: false
   deploy.branch = "master"
-  deploy.remote   = "git@github.com:tgdev/tgdev.github.com.git"
+  # deploy.remote   = "git@github.com:tgdev/tgdev.github.com.git"
 end
