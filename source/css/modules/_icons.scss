@@ -1,0 +1,53 @@
+%icon-before {
+	position: relative;
+	left: -10px;
+}
+
+%icon-after {
+	position: relative;
+	right: -10px;
+}
+
+.icon__before {
+	@include rem(padding-left, 20px);
+}
+
+.icon__after {
+	@include rem(padding-right, 20px);
+}
+
+.icon--plus {
+	&:after {
+		@extend %icon-after;
+		content: "+";
+	}
+}
+
+.icon--arrow-left {
+
+	&:before {
+		@extend %icon-before;
+		content: "<";
+	}
+}
+
+.icon--arrow-right {
+	&:after {
+		@extend %icon-after;
+		content: ">";
+	}
+}
+
+// .icon--twitter {
+//  &:before {
+//		@extend %icon-before;
+// 		content: "";
+//  }
+// }
+
+// .icon--github {
+//  &:before {
+//		@extend %icon-before;
+// 		content: "";
+//  }
+// }

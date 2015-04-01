@@ -1,0 +1,15 @@
+<ul class="list--clean list--article-nav">
+
+  <% if current_article.previous_article %>
+    <li class="prev">
+      <a href="<%= current_article.previous_article.url %>" title="Previous article">&#171; <span class="is-small--inline">Previous Article</span></a>
+    </li>
+  <% end %>
+
+  <% if current_article.next_article %>
+    <li class="next">
+      <a href="<%= current_article.next_article.url %>" title="Next article"><span class="is-small--inline">Next Article</span> &#187;</a>
+    </li>
+  <% end %>
+
+</ul>

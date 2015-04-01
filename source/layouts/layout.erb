@@ -1,0 +1,21 @@
+<%= partial "HTML_Partials/global/head" %>
+
+	<a href="#main" role="link" title="Skip to main content" class="skipNavigation">Skip to main content</a>
+
+	<%= partial "HTML_Partials/global/header" %>
+
+    <%= partial "HTML_Partials/page-heading" %>
+
+    	<div id="main" class="main scene_element scene_element--fadeinup" role="main">
+
+    		<div class="container">
+
+    			<%= yield %>
+
+    		</div>
+
+        </div>
+
+	<%= partial "HTML_Partials/global/footer" %>
+
+<%= partial "HTML_Partials/global/foot" %>

@@ -1,0 +1,84 @@
+.list--clean {
+	@extend %list-reset;
+}
+
+.list--inline {
+	li {
+		display: inline-block;
+		@include rem(margin-left, 5px);
+	}
+}
+
+.list--stacked {
+	li {
+		display: block;
+	}
+}
+
+.list--pagination {
+	@extend %cf;
+	
+	.prev {
+		float: left;
+		
+		a:before {
+			content: "\00AB";
+		}
+	}
+
+	.next {
+		float: right;
+		
+		a:after {
+			content: "\00BB";
+		}
+	}
+}
+
+.list--article-nav {
+	
+	li {
+		display: inline;
+	}
+
+	a {
+		@extend %fade-transition;	
+	}
+
+	.prev {
+		float: left;
+	}
+
+	.next {
+		float: right;
+	}
+
+	@include respond-to($desk) {
+		li {
+			position: fixed;
+			top: 50%;
+			background-color: black;
+			@include border-radius(30px);
+		}
+
+		a {
+			@include rem(padding, 0 12px);
+			@include font-size(18px);
+			line-height: 1;
+			text-decoration: none;
+			color: $base-ui-color;
+
+			&:hover {
+				color:white;
+			}
+		}
+
+		.prev {
+			left: 10%;
+		}
+
+		.next {
+			right: 10%;
+		}
+	}
+}

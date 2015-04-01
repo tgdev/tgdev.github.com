@@ -1,0 +1,20 @@
+.btn {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	@include rem(padding, 10px 20px 10px 10px);
+	@include font-size(10px);
+	text-decoration: none;
+	@include border-radius($round-corners);
+}
+
+.btn--primary {
+	@extend %fade-transition;
+	background-color: #222;
+	color: white;
+	
+	&:hover,
+	&:focus {
+		background-color: $red; 
+	}
+}

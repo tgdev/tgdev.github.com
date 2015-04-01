@@ -1,0 +1,55 @@
+// Custom Fonts
+@font-face {
+  font-family: "LeagueGothicReg";
+    src: url('/fonts/leaguegothic-regular-webfont.eot');
+    src: url('/fonts/leaguegothic-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/leaguegothic-regular-webfont.woff') format('woff'),
+         url('/fonts/leaguegothic-regular-webfont.ttf') format('truetype'),
+         url('/fonts/leaguegothic-regular-webfont.svg#LeagueGothic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$title-text: "LeagueGothicReg", serif;
+
+h1, .alpha{
+    @include font-size($h1-size);
+}
+h2, .beta{
+    @include font-size($h2-size);
+}
+h3, .gamma{
+    @include font-size($h3-size);
+}
+h4, .delta{
+    @include font-size($h4-size);
+}
+h5, .epsilon{
+    @include font-size($h5-size);
+}
+h6, .zeta{
+    @include font-size($h6-size);
+}
+
+.giga{
+   @include font-size($giga-size);
+}
+.mega{
+   @include font-size($mega-size);
+}
+.kilo{
+   @include font-size($kilo-size);
+}
+
+.lede,
+.lead{
+    @include font-size($base-font-size * 1.125);
+}
+
+.smallprint,
+.milli{
+   @include font-size($milli-size);
+}
+.micro{
+   @include font-size($micro-size);
+}

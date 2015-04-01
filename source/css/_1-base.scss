@@ -1,0 +1,129 @@
+//////////////////////////////////////////////////
+// Main styles
+//////////////////////////////////////////////////
+
+// apply a natural box layout model to all elements
+* {
+  &,
+  &:before,
+  &:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+html{
+    overflow-y:scroll;
+    min-height:100%;
+    width: 100%;
+  	color: $base-font-color;
+}
+
+body {
+
+  font: 100%/1.4 $base-font-family;
+
+  @include respond-to($lap-start) {
+    font-size: 112.5%;
+    line-height: 1.6;
+  }
+
+  @include respond-to($desk) {
+    font-size: 125%;
+    line-height: 1.6;
+  }
+
+  @include respond-to($wall) {
+     font-size: 150%;
+  }
+}
+
+iframe, object, embed {
+  max-width: 100%;
+}
+
+@import "base/type",
+	"base/quotes",
+	"base/code",
+	"base/images",
+	"base/tables",
+	"base/forms";
+
+// ::-moz-selection{ background: $red; color:#fff; text-shadow: none; }
+// ::selection { background: $red; color:#fff; text-shadow: none; }
+
+%fade-transition {
+  @include transition(background-color 0.3s ease);
+}
+
+%list-reset {
+	list-style: none;
+    margin: 0;
+}
+
+li {
+    > ul,
+    > ol{
+         margin-bottom:0;
+     }
+}
+
+a {
+  color: $red;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+
+  &:visited,
+  &:focus {
+    color: lighten($red, 5);
+  }
+}
+
+small {
+  @include font-size(10px);
+}
+
+.outline-title,
+.skipNavigation,
+.screen-reader-text {
+	@include accessibility;
+}
+
+blockquote {
+  font-style: italic;
+  margin-left: 1em;
+  color: $grey-dark;
+}
+
+code {
+  @include rem(padding, 5px 2px);
+  background-color: $grey;
+  @include font-size(13px);
+}
+
+.code--block code {
+  display: block;
+  @include rem(padding, 15px 20px);
+  border-left: 5px solid darken($grey, 10);
+  word-wrap: break-word;
+
+  @include respond-to($desk) {
+    // border-left: 10px solid darken($grey, 10);
+    border-left-width: 10px;
+  }
+}
+
+.profile__image {
+  img {
+    margin: 0 auto;
+    @include rem(height, 150px);
+
+    @include respond-to($desk) {
+      @include rem(height, 300px);
+    }
+  }
+}

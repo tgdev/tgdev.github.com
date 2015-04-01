@@ -1,0 +1,31 @@
+<% @pageTitle = "Resources" %>
+<% @pageDescription = "" %>
+<% @pageHeading = "Resources" %>
+<% @pageTagline = "Sharing is caring" %>
+
+<% content_for :fbopengraph do %>          
+	<meta property="og:url" content="<%= @siteUrl %>/resources" />
+    <meta property="og:title" content="<%= @pageTitle %>" />
+<% end %>
+
+<% content_for :twittercard do %>
+	<meta name="twitter:url" content="<%= @siteUrl %>/resources" />
+    <meta name="twitter:title" content="<%= @pageTitle %>" />
+    <meta name="twitter:description" content="<%= @pageDescription %>" />
+<% end %>
+
+<article class="article article--full" role="article">
+
+	<p class="article__intro">In my 2 or so years in this industry I have found a number of things super useful which I would like to pass on and share with any aspiring developer.</p>
+
+	<div class="article__content">
+
+		<p>Books</p>
+	
+		<p>Online Tools</p>
+
+		<p><a href="http://twitter.co/tom_gllard">Tweet me</a> if there is something that you've found super useful for making killer web sites.</p>
+
+	</div>
+
+</article>

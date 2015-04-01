@@ -1,0 +1,129 @@
+//////////////////////////////////////////////////
+// Layout Styles
+// Susy Grid settings found in /css/_vars.scss
+//////////////////////////////////////////////////
+
+// ============================
+// Grid container
+// ============================
+
+// Future-proof css viewport - http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag/
+@-webkit-viewport{width:device-width}
+@-moz-viewport{width:device-width}
+@-ms-viewport{width:device-width}
+@-o-viewport{width:device-width}
+@viewport{width:device-width}
+
+.container {
+	@extend %cf;
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+
+	@include respond-to($desk) { // 800px / 16px
+		width: 86%;
+	}
+}
+
+
+// ============================
+// Site header
+// ============================
+.header {
+	background-color: black;
+	@include rem(padding, 10px 0);
+}
+
+// Brand logo
+.logo {
+	@extend %cf;
+	
+	a {
+		text-decoration: none;
+		color: white;
+	}
+
+	.logo__img {
+		float: left;
+		display: block;
+		margin-right: $base-spacing-unit;
+		@include rem(max-width, 50px);
+	}
+
+	.logo__title {
+		margin-bottom: 0;
+		font: {
+			family: $arial;
+			weight: normal;
+		}
+		text-transform: uppercase;
+		@include font-size(18px);
+	}
+
+	@include respond-to($desk) {
+		float: left;
+		width: 25%;
+	}
+}
+
+
+// ============================
+// Site footer
+// ============================
+.footer {
+
+	@include rem('padding', $base-spacing-unit 0);
+	background-color: white;
+
+	small {
+		display: block;
+		text-align: center;
+		// margin-bottom: $base-spacing-unit / 2;
+	}
+
+	@include respond-to($desk) {
+		@include rem('padding', $base-spacing-unit * 3 0);
+	}
+}
+
+
+// ============================
+// Site content
+// ============================
+.main {
+	@include rem('padding', $base-spacing-unit 0);
+	background-color: $mushroom;
+
+	@include respond-to($desk) {
+		@include rem('padding', $base-spacing-unit * 3 0);
+	}
+}
+
+.pagination {
+	@include rem (padding-top, 20px);
+	border-top: 1px solid white;
+}
+
+.pagination__summary {
+	text: {
+		transform: uppercase;
+		align: center;
+	}
+	@include font-size(12px);
+}
+
+.row {
+	overflow: hidden;
+}
+
+.half {
+	@include respond-to($desk) {
+		width: 48%;
+		float: left;
+		margin-left: 2%;
+		
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+}

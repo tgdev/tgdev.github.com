@@ -1,0 +1,41 @@
+/* States
+================================================== */
+.is-hidden {
+	display: none;
+}
+
+.is-visible {
+	display: block!important;
+}
+
+.is-small {
+	display: block;
+
+	@include respond-to($desk) {
+		display: none!important;
+	}
+}
+
+.is-small--inline {
+	display: inline;
+	
+	@include respond-to($desk) {
+		display: none!important;
+	}
+}
+
+.is-large {
+	display: none!important;
+	
+	@include respond-to($desk) {
+		display: block;
+	}
+}
+
+.is-large--inline {
+	display: none;
+	
+	@include respond-to($desk) {
+		display: inline;
+	}	
+}

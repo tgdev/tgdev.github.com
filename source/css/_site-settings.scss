@@ -1,0 +1,59 @@
+// Site settings
+// ==========================================
+
+// setup
+$debug-mode: false; // set to false when ready for production
+
+// Typography
+$base-font-family: $arial;
+$base-font-size:    16px;
+$base-line-height:  24px;
+$base-font-color: #222;
+
+$giga-size:         96px;
+$mega-size:         72px;
+$kilo-size:         48px;
+
+$h1-size:           36px; // .alpha
+$h2-size:           30px; // .beta
+$h3-size:           24px; // .gamma
+$h4-size:           20px; // .delta
+$h5-size:           16px; // .epsilon
+$h6-size:           14px; // .zeta
+
+$milli-size:        12px;
+$micro-size:        10px;
+
+// Vertical rhythm
+$base-spacing-unit: $base-line-height / 2;
+$half-spacing-unit: $base-spacing-unit / 2;
+$line-height-ratio: $base-line-height / $base-font-size;
+
+// CSS3 settings
+$round-corners: 4px;
+$transition: 300;
+
+// Homemade grid breakpoints
+// Use with respond-to mixin
+$palm: 300px;
+$palm-end: 599px;
+$lap-start: 600px;
+$lap-end: 799px;
+$desk: 800px;
+$wall: 1200px;
+$max-container-width: 1360;
+
+
+//Color names
+$red: #ae312f;
+$grey: #dedede;
+$grey-dark: #666;
+$mushroom: #dad4c8;
+
+
+$base-ui-color: #999;
+
+// Brand colors
+$brand-primary: $red;
+$brand-secondary: $mushroom;
+$brand-complementary: $grey;

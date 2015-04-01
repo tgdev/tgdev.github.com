@@ -1,0 +1,73 @@
+---
+pageable: true
+layout: false
+---
+
+<%= partial "HTML_Partials/global/head" %>
+
+	<a href="#main" role="link" title="Skip to main content" class="skipNavigation">Skip to main content</a>
+	    	
+	<%= partial "HTML_Partials/global/header" %>
+
+	<div class="page-heading__wrapper">
+
+		<div class="container">
+
+			<h2 class="page-heading__title"><%= tagname %></h2>
+			<p class="page-heading__tagline">Browse related articles</p>
+
+		</div>
+
+	</div>
+
+	<div id="main" class="main" role="main">
+    		
+		<div class="container">
+
+			<% page_articles.each_with_index do |article, i| %>
+
+				<article class="article article--summary" role="article" >
+
+					<a href="<%= article.url %>">
+
+						<h3 class="article__title"><%= article.title %></h3>
+
+						<p class="article__content"><%= article.data.intro %></p>
+						
+						<p class="article__date">Posted <time datetime="<%= article.date.strftime('%Y-%m-%d') %>" pubdate><%= article.date.strftime('%B %e, %Y') %></time></p>
+
+					</a>
+
+				</article>
+
+			<% end %>
+
+			<div class="article pagination">
+	
+				<p class="pagination__summary">Articles <%= page_start %> to <%= page_end %> of <%= articles.length %></p>
+
+				<ul class="list--clean list--pagination">
+
+				   	<% if prev_page %>
+				    	<li class="prev">
+				    		<a href="<%= prev_page.url %>">Older articles</a>
+				    	</li>
+						<% end %>
+
+				    <% if next_page %>
+				    	<li class="next">
+				    		<a href="<%= next_page.url %>">Newer articles</a>
+				    	</li>
+				  	<% end %>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<%= partial "HTML_Partials/global/footer" %>
+
+<%= partial "HTML_Partials/global/foot" %>

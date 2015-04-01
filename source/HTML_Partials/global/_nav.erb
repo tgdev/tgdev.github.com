@@ -1,0 +1,18 @@
+<nav id="site-nav" class="nav" role="navigation">
+
+	<h2 class="outline-title">Primary Navigation</h2>
+
+	<ul class="main-menu" role="menu">
+		<li role="menuitem" class="mobile-menu-btn mobile-menu-btn--close is-small"><a href="#" class="small-txt">Close X</a></li>
+		<li class="first" role="menuitem">
+			<%= current_link_to("Blog", "/index.html", :title => "View articles") %>
+		</li>
+		<li role="menuitem">
+			<%= current_link_to("Topics", "/blog/topics", :title => "Browse by topic") %>
+		</li>
+		<li class="last" role="menuitem">
+			<%= current_link_to("About", "/about", :title => "About me") %>
+		</li>
+	</ul>
+	
+</nav>

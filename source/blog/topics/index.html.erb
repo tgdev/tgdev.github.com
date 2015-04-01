@@ -1,0 +1,28 @@
+<% @pageTitle = "Topics" %>
+<% @pageDescription = "" %>
+<% @pageHeading = "Topics" %>
+<% @pageTagline = "Browse all articles" %>
+
+<% content_for :fbopengraph do %>          
+  <meta property="og:url" content="<%= @siteUrl %>/topics" />
+  <meta property="og:title" content="<%= @pageTitle %>" />
+<% end %>
+
+<% content_for :twittercard do %>
+  <meta name="twitter:url" content="<%= @siteUrl %>/topics">
+  <meta name="twitter:title" content="<%= @pageTitle %>">
+  <meta name="twitter:description" content="<%= @pageDescription %>">
+<% end %>
+
+<ul class="list--clean list--inline panel">
+  <% blog.tags.each do |tag, articles| %>
+    <li>
+      <h4 class="panel__title"><%= tag %></h4>
+      <ul class="list--clean list--stacked">
+        <% articles.each do |article| %>
+          <li><a href="<%= article.url %>"><%= article.title %></a></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,14 @@
+// Themes Module
+@mixin themeafy($color: $brand-primary) {
+
+	a,
+	.highlight {
+		color: #{$color};
+	}
+
+	.btn--primary,
+	.mobile-menu-btn--close {
+		background-color: #{$color};
+		color: black;
+	}
+}

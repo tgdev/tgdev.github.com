@@ -1,0 +1,39 @@
+.panel {
+	text-align: center;
+
+	> li {
+		width: 48%;
+		@include rem(margin, 0 10px 20px 0);
+		@include rem(padding-bottom, 20px);
+		vertical-align: top;
+	}
+
+	.panel__title {
+		text-transform: capitalize;
+	}
+
+	@include respond-to($lap-end) {
+		// text-align: left;
+		> li {
+			width: 32.333334%;
+			
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+		}
+	}
+	
+	@include respond-to($wall) {
+		> li {
+			width: 24%;
+			
+			&:nth-child(3n) {
+				@include rem(margin-right, 10px);
+			}
+
+			&:nth-child(4n) {
+				margin-right: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,37 @@
+<% @pageTitle = "About" %>
+<% @pageDescription = "" %>
+<% @pageHeading = "Who is Tom Gillard?" %>
+<% @pageTagline = "Front End Developer from Melbourne, Australia" %>
+
+<% content_for :fbopengraph do %>
+	<meta property="og:url" content="<%= @siteUrl %>/about" />
+    <meta property="og:title" content="<%= @pageTitle %>" />
+<% end %>
+
+<% content_for :twittercard do %>
+	<meta name="twitter:url" content="<%= @siteUrl %>/about">
+    <meta name="twitter:title" content="<%= @pageTitle %>">
+    <meta name="twitter:description" content="<%= @pageDescription %>">
+<% end %>
+
+<article class="article article--full" role="article">
+
+	<figure class="profile__image">
+
+		<img src="/img/elements/profile.svg" onerror="this.onerror=null; this.src='/img/elements/profile-large.png'" alt="" />
+
+	</figure>
+
+	<p class="article__intro">Oh, hi there. I'm Tom.</p>
+
+	<div class="article__content">
+
+		<p>I love building websites and am so grateful to been doing so for a living. My love affair began dabbling in building sites for a variety of no-name bands I had the fun of playing in and has manifested itself into a keen interest in responsive design and front-end performance.</p>
+
+		<p>This site was started to document my findings and challenges in projects and tinkerings as I come across them. It's more of a technical journal than a blog. Some posts will be a long analysis on an idea and some will be quick, little thoughts. Either way I hope you get something out of them.</p>
+
+		<p>If you'd like to get in contact please send me an <a href="mailto:info@tomgillar.com">email</a>. Otherwise, we can communicate over <a href="http://twitter.com/tom_gillard" target="_blank">twitter</a>.</p>
+
+	</div>
+
+</article>

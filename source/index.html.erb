@@ -1,0 +1,70 @@
+---
+pageable: true
+---
+
+<% @pageTitle = "Blog" %>
+<% @pageDescription = "" %>
+<% @pageHeading = "Sharper in Digital" %>
+<% @pageTagline = "Thoughts and findings of a front end developer" %>
+
+<% content_for :fbopengraph do %>
+	<meta property="og:url" content="<%= @siteUrl %>" />
+    <meta property="og:title" content="Sharper in digital - Thoughts and findings of a front end developer" />
+<% end %>
+
+<% content_for :twittercard do %>
+	<meta name="twitter:url" content="<%= @siteUrl %>" />
+    <meta name="twitter:title" content="Sharper in digital" />
+    <meta name="twitter:description" content="Thoughts and findings of a front end developer" />
+<% end %>
+
+<% if page_articles.length > 0 %>
+	<% page_articles.each do |article| %>
+
+		<article class="article article--summary" role="article" >
+
+			<a href="<%= article.url %>">
+
+				<h3 class="article__title"><%= article.title %></h3>
+
+				<p class="article__content"><%= article.data.intro %></p>
+
+				<p class="article__date">Posted <time datetime="<%= article.date.strftime('%Y-%m-%d') %>" pubdate><%= article.date.strftime('%B %e, %Y') %></time></p>
+
+			</a>
+
+		</article>
+
+	<% end %>
+
+	<div class="article pagination">
+
+		<p class="pagination__summary">Articles <%= page_start %> to <%= page_end %> of <%= articles.length %></p>
+
+		<ul class="list--clean list--pagination">
+
+		   	<% if prev_page %>
+		    	<li class="prev">
+		    		<a href="<%= prev_page.url %>">Newer articles</a>
+		    	</li>
+				<% end %>
+
+		    <% if next_page %>
+		    	<li class="next">
+		    		<a href="<%= next_page.url %>">Older articles</a>
+		    	</li>
+		  	<% end %>
+
+		</ul>
+
+	</div>
+
+<% else %>
+
+	<article class="article" role="article">
+
+		<p><strong>No articles have been written just yet but I'm working on it so check back soon.</strong></p>
+
+	</article>
+
+<%end %>

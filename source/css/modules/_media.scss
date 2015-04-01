@@ -1,0 +1,17 @@
+.media {
+	@extend %cf;
+}
+
+.media__image {
+	float: left;
+	@include rem(margin-right, 28px);
+}
+
+.media__image--rev {
+	float: right;
+	@include rem(margin-left, 28px);
+}
+
+.media__body {
+	overflow: hidden;
+} 

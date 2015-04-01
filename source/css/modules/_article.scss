@@ -1,0 +1,109 @@
+.article {
+
+	@include respond-to($desk) {
+		width: 70%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/////////////////////////////////
+// Article Elements
+/////////////////////////////////
+
+.article__title {
+	margin-bottom: 0;
+	text-transform: uppercase;
+}
+
+.article__date {
+	position: relative;
+	display: inline;
+	left: -5px;
+	@include rem(padding, 0 5px);
+	@include rem(margin-bottom, 10px);
+	@include font-size(12px);
+	background-color: white;
+}
+
+.article__intro {
+	display: block;
+	@include rem(padding-bottom, 30px);
+	margin-bottom: 0;
+	border-bottom: 1px solid $base-ui-color;
+	line-height: 1.4;
+	@include font-size(24px);
+	font: {
+		family: $arial;
+		weight: bold;
+	}
+	text: {
+		align: center;
+		transform: uppercase;
+	}
+}
+
+.article__content {
+	font-family: $georgia;
+}
+
+/////////////////////////////////
+// Article Modifiers
+/////////////////////////////////
+
+.article--summary {
+	@extend %fade-transition;
+	border-top: 1px solid white;
+	border-bottom: 1px solid $base-ui-color;
+	@include rem(padding, 30px 20px 20px);
+	
+	&:first-child {
+		border-top: none;
+	}
+
+	&:last-child {
+		border-bottom: none;
+	}
+
+	&:hover,
+	&:focus {
+		background-color: darken($mushroom, 10); 
+	}
+
+	a {
+		color: $base-font-color;
+		text-decoration: none;
+	}
+
+	.article__content {
+		@extend %landmark;
+	}
+}
+
+.article--full {
+	
+	.article__content {
+		border-top: 1px solid whitesmoke;
+		@include rem(padding-top, 20px);
+		
+		p,
+		ul,
+		ol {
+			@extend %landmark;
+		}
+
+		figure > img {
+			margin: 0 auto;
+		}
+
+		figcaption {
+			text-align: center;
+		}
+	}
+
+	@include respond-to($desk) {
+		.article__content {
+			@include rem(padding-top, 60px);
+		}
+	}
+}

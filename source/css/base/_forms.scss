@@ -1,0 +1,58 @@
+// Form module 
+.form-row {
+	vertical-align: top;
+	margin-bottom: 5px;
+	@extend %cf;
+	
+	&:last-child {
+		margin-bottom: 4px;
+	}
+}
+
+fieldset {
+	padding: $base-spacing-unit;
+}
+
+label,
+.label {
+	font-family: verdana, arial, san-serif;
+	@include font-size(12px);
+}
+
+.text-input,
+textarea {
+	// @include span-columns(3 omega, 6, 2px 0px 0px 3px);
+	border: 1px solid black;		
+}
+
+.text-input {
+	height: 26px; 
+}
+
+textarea {
+	resize: none;
+	overflow: auto;
+	margin-bottom: 2px;
+}
+
+// checklist / radio button grouping
+.check-list{
+    list-style:none;
+    margin:0;
+
+	label,
+	.label{
+    	display:inline-block;
+	}
+}
+
+.extra-help{
+    display:inline-block;
+    visibility:hidden;
+}
+
+// show helper messages on focus - eg: validation
+.text-input:active + .extra-help,
+.text-input:focus + .extra-help{
+    visibility:visible;
+}

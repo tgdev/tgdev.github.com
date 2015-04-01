@@ -1,0 +1,62 @@
+<% @pageTitle = current_article.title %>
+
+<% content_for :fbopengraph do %>          
+	<meta property="og:url" content="<%= @siteUrl %><%= current_article.url %>" />
+    <meta property="og:title" content="<%= current_article.title %>" />
+<% end %>
+
+<% content_for :twittercard do %>
+	<meta name="twitter:url" content="<%= @siteUrl %><%= current_article.url %>">
+    <meta name="twitter:title" content="<%= current_article.title %>">
+    <meta name="twitter:description" content="<%= current_article.data.intro %>">
+<% end %>
+
+<%= partial "HTML_Partials/global/head" %>
+
+<a href="#main" role="link" title="Skip to main content" class="skipNavigation">Skip to main content</a>
+
+<%= partial "HTML_Partials/global/header" %>
+
+<div class="page-heading__wrapper">
+
+	<div class="container">
+
+		<h1 class="page-heading__title"><%= current_article.title %></h1>
+		<time datetime="<%= current_article.date.strftime('%Y-%m-%d') %>" pubdate class="page-heading__tagline"><%= current_article.date.strftime('%B %e, %Y') %></time>
+
+	</div>
+
+</div>
+
+<div id="main" class="main" role="main">
+
+	<div class="container">
+
+		<article class="article article--full" role="article">
+
+			<p class="article__intro"><%= current_article.data.intro %></p>
+
+			<div class="article__content">
+
+				<%= yield %>
+
+			</div>
+
+			<p>
+				<strong>TOPICS:</strong> 
+				<% current_article.tags.each do |tag| %>
+					<a href="/blog/topics/<%= tag %>"><%= tag %></a>
+				<% end %>
+			</p> 
+			
+		</article>
+
+		<%= partial "HTML_Partials/article-nav" %>
+
+	</div>
+
+</div>
+
+<%= partial "HTML_Partials/global/footer" %>
+
+<%= partial "HTML_Partials/global/foot" %>
