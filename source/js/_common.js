@@ -10,7 +10,7 @@ tg.common = {
 		$('.article__content').fitVids();
 
 		// page transitions
-		var content  = $('#main').smoothState({
+		var content  = $('#js-smooth-state').smoothState({
         	// onStart runs as soon as link has been activated
         	onStart : {
 
