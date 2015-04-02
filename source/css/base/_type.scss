@@ -1,16 +1,13 @@
 // Custom Fonts
 @font-face {
   font-family: "LeagueGothicReg";
-    src: url('/fonts/leaguegothic-regular-webfont.eot');
-    src: url('/fonts/leaguegothic-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/leaguegothic-regular-webfont.woff') format('woff'),
-         url('/fonts/leaguegothic-regular-webfont.ttf') format('truetype'),
-         url('/fonts/leaguegothic-regular-webfont.svg#LeagueGothic') format('svg');
+    src: url('/fonts/leaguegothic-regular-webfont.woff2') format('woff2'),
+         url('/fonts/leaguegothic-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
-$title-text: "LeagueGothicReg", serif;
+$title-text: "LeagueGothicReg", "Impact", sans-serif;
 
 h1, .alpha{
     @include font-size($h1-size);

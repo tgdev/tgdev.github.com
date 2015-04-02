@@ -1,7 +1,4 @@
-/**
- * @Common Sitewide Scripts
- */
-
+// Common Sitewide Scripts
 tg.common = {
 
 	init: function() {
