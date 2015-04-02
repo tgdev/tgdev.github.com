@@ -43,7 +43,7 @@ set :markdown, :fenced_code_blocks => true,
 
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
-activate :automatic_alt_tags
+# activate :automatic_alt_tags
 
 
 ###
@@ -126,7 +126,7 @@ configure :development do
 
   # Livereload in browser
   # First: gem install middleman-livereload
-  activate :livereload
+  # activate :livereload
 
 end
 
@@ -153,9 +153,6 @@ configure :build do
   # Uniquely-named assets
   # activate :asset_hash
 
-  # Enable cache buster - older than above
-  # activate :cache_buster
-
   # Use relative URLs
   # activate :relative_assets
 
@@ -175,5 +172,4 @@ activate :deploy do |deploy|
   deploy.method = :git
   deploy.build_before = true # default: false
   deploy.branch = "master"
-  # deploy.remote   = "git@github.com:tgdev/tgdev.github.com.git"
 end
