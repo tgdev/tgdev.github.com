@@ -168,8 +168,8 @@ end
 ###
 # Deployment settings - Github user page (http://tgdev.github.com/)
 ###
-activate :deploy do |deploy|
-  deploy.method = :git
-  deploy.build_before = true # default: false
-  deploy.branch = "master"
-end
+# activate :deploy do |deploy|
+#   deploy.method = :git
+#   deploy.build_before = true
+#   deploy.branch = "master"
+# end
