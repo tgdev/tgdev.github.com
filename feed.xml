@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sharper in Digital</title>
+  <subtitle>Thoughts and findings of a Front End Developer</subtitle>
+  <id>http://tgdev.github.io/blog</id>
+  <link href="http://tgdev.github.io/blog"/>
+  <link href="http://tgdev.github.io/feed.xml" rel="self"/>
+  <updated>2014-01-20T13:00:00Z</updated>
+  <author>
+    <name>Tom Gillard</name>
+  </author>
+  <entry>
+    <title>Battle of the Sasses</title>
+    <link rel="alternate" href="http://tgdev.github.io/blog/2014-01-21-ruby-sass-vs-node-sass/"/>
+    <id>http://tgdev.github.io/blog/2014-01-21-ruby-sass-vs-node-sass/</id>
+    <published>2014-01-20T13:00:00Z</published>
+    <updated>2015-01-12T07:29:43+11:00</updated>
+    <content type="html">&lt;p&gt;&lt;a href="http://libsass.org/"&gt;Libsass&lt;/a&gt; is a C port of the original Sass engine to offer the power of Sass without being tied to Ruby.&lt;/p&gt;
+
+&lt;p&gt;Now I work in Windows and Ruby can be a bit of a pain so I’m more than keen to give the new kid on the block a go.&lt;/p&gt;
+
+&lt;p&gt;What I’m going to do is create two test projects using the &lt;a href="http://inuitcss.com"&gt;inuit css framework&lt;/a&gt; with their own gruntfile but each gruntfile will be different.&lt;/p&gt;
+
+&lt;p&gt;Project 1 will have the ruby Sass grunt task while Project 2 will use the newer, faster Libsass with Node-sass and Grunt-Sass.&lt;/p&gt;
+
+&lt;p&gt;Ben Frain has a great article on &lt;a href="http://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/"&gt;getting up and running with libsass, node-sass and grunt-sass&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="the-setup"&gt;The setup&lt;/h2&gt;
+
+&lt;p&gt;Let’s take a look at each project’s &lt;code&gt;package.json&lt;/code&gt; file to compare.&lt;/p&gt;
+
+&lt;div class="row"&gt;
+&lt;div class="half"&gt;
+&lt;p&gt;&lt;strong&gt;Project 1&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code--block"&gt;
+&lt;code&gt;{
+  "name": "project-1",
+  "version": "0.5.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "load-grunt-tasks": "~0.2.0",
+    "time-grunt": "~0.1.1",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-contrib-sass": "latest"
+  },
+  "engines": {
+    "node": "&amp;gt;=0.8.0"
+  }
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="half"&gt;
+&lt;p&gt;&lt;strong&gt;Project 2&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class="code--block"&gt;
+&lt;code&gt;{
+  "name": "project-1",
+  "version": "0.5.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "load-grunt-tasks": "~0.2.0",
+    "time-grunt": "~0.1.1",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-sass": "0.6.1"
+  },
+  "engines": {
+    "node": "&amp;gt;=0.8.0"
+  }
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There’s only one main difference between the two projects and that is the grunt package for Sass.&lt;/p&gt;
+
+&lt;h2 id="the-test"&gt;The test&lt;/h2&gt;
+&lt;p&gt;After running &lt;code&gt;npm install&lt;/code&gt; so as to install all our grunt packages from our &lt;code&gt;package.json&lt;/code&gt; file, we’ll run the &lt;code&gt;grunt&lt;/code&gt; command which looks like this in &lt;code&gt;gruntfile.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;grunt.registerTask('default', ['sass', 'watch']);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This simply compiles our Sass partial files from inuit into style.css and then watches said Sass files for any changes.&lt;/p&gt;
+
+&lt;p&gt;Making a quick little change to one of our Sass files (like changing the background colour on the body) and saving that change triggers the grunt watch task to kick in and…&lt;/p&gt;
+
+&lt;h2 id="the-results"&gt;The results&lt;/h2&gt;
+&lt;p&gt;As we can see from the image below, the Node Sass task, which uses libsass, is indeed much faster than the native Ruby based Sass task.&lt;/p&gt;
+
+&lt;figure&gt;
+	&lt;img src="/img/posts/2014/sass-test.png" alt="Test results: Ruby Sass - 2.645 seconds. Libsass - 1 second." /&gt;
+	&lt;figcaption&gt;
+		&lt;small&gt;Top: Ruby Sass completion time. Bottom: Libsass completion time&lt;/small&gt;
+	&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id="soooooo"&gt;Soooooo…&lt;/h2&gt;
+
+&lt;p&gt;I know this is a pretty light on example but imagine you’re working on a large scale site with multiple Sass modules and even styles for various plugins, not to mention running multiple grunt tasks - you’re gonna love the extra time savings.&lt;/p&gt;
+
+&lt;p&gt;Plus, with support for sourcemaps being added to Libsass in the last month, there’s not much of a reason to continue waiting around for the native Ruby Sass grunt task to drag it’s knuckles into CSS pre-compilation.&lt;/p&gt;
+
+&lt;p&gt;We’re all far too busy for that right?&lt;/p&gt;
+
+&lt;p&gt;T&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;em&gt;NOTE: If you use Compass, which Libsass still does not support, checkout the &lt;a href="https://github.com/nDmitry/grunt-autoprefixer"&gt;autoprefixer grunt task&lt;/a&gt; that uses the &lt;a href="http://caniuse.com/"&gt;Can I Use&lt;/a&gt; database.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Social media meta</title>
+    <link rel="alternate" href="http://tgdev.github.io/blog/2014-01-11-social-media-meta-tags/"/>
+    <id>http://tgdev.github.io/blog/2014-01-11-social-media-meta-tags/</id>
+    <published>2014-01-10T13:00:00Z</published>
+    <updated>2015-01-12T07:29:43+11:00</updated>
+    <content type="html">&lt;p&gt;With so many people using social media these days, it seems only logical to include the snippets below on all of our sites.&lt;/p&gt;
+
+&lt;h2 id="facebook-open-graph"&gt;Facebook Open Graph&lt;/h2&gt;
+
+&lt;p&gt;These are probably the most commonly known and you’ve probably used these once or twice before.&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;&amp;lt;!-- Facebook Open Graph tags --&amp;gt;
+&amp;lt;meta property="og:image" content="" /&amp;gt;
+&amp;lt;meta property="og:site_name" content="" /&amp;gt;
+&amp;lt;meta property="og:type" content="" /&amp;gt;
+&amp;lt;meta property="og:url" content="" /&amp;gt;
+&amp;lt;meta property="og:title" content="" /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More details of Facebook’s OpenGraph tags/options can be found on &lt;a href="http://davidwalsh.name/facebook-meta-tags"&gt;David Walsh’s Blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id="twitter-cards"&gt;Twitter Cards&lt;/h2&gt;
+&lt;p&gt;These are a little newer and there is a LOT you can include (links to mobile apps, product details, etc) so make sure you check out the docs via the link below.&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;&amp;lt;!-- Twitter Card --&amp;gt;
+&amp;lt;meta name="twitter:card" content="summary" /&amp;gt;
+&amp;lt;meta name="twitter:creator" content=""&amp;gt;
+&amp;lt;meta name="twitter:url" content="" /&amp;gt;
+&amp;lt;meta name="twitter:title" content="" /&amp;gt;
+&amp;lt;meta name="twitter:description" content="" /&amp;gt;
+&amp;lt;meta name="twitter:image:src" content="" /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More details of Twitter’s Card tags/options can be found in their &lt;a href="https://dev.twitter.com/docs/cards"&gt;development docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id="rich-pins"&gt;Rich Pins&lt;/h2&gt;
+&lt;p&gt;Possibly the newest kid on the block launching in 2013, these can also include alot of content when somebody pins something from your site. They type property determines what additional meta data you can share so check out the link to the docs below.&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;&amp;lt;!-- Pintrest Rich Pins --&amp;gt;
+&amp;lt;meta property="og:title" content="" /&amp;gt;
+&amp;lt;meta property="og:description" content="" /&amp;gt;
+&amp;lt;meta property="og:type" content="" /&amp;gt;
+&amp;lt;meta property="og:url" content="" /&amp;gt;
+&amp;lt;meta property="og:image" content="" /&amp;gt;
+&amp;lt;meta property="og:site_name" content="" /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More details of Pinterest’s Rich Pins tags/options can be found in their &lt;a href="http://developers.pinterest.com/rich_pins/"&gt;development docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id="putting-it-all-together"&gt;Putting it all together&lt;/h2&gt;
+&lt;p&gt;An example site for a business selling shoes, with the page template based on a watered down version of the HTML5 boilerplate, could look something like this;&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html class="no-js"&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;meta charset="utf-8" /&amp;gt;
+    &amp;lt;title&amp;gt;Social Meta Tag Example&amp;lt;/title&amp;gt;
+    &amp;lt;meta name="viewport" content="width=device-width, initial-scale=1"&amp;gt;
+    &amp;lt;link rel="stylesheet" href="css/style.css"&amp;gt;
+    &amp;lt;script src="js/vendor/modernizr-2.7.1.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+    
+    &amp;lt;!-- Facebook Open Graph tags --&amp;gt;
+    &amp;lt;meta property="og:image" content="http://shop.example.com/images/store/SA-001.jpg" /&amp;gt;
+    &amp;lt;meta property="og:site_name" content="Example Store" /&amp;gt;
+    &amp;lt;meta property="og:type" content="product" /&amp;gt;
+    &amp;lt;meta property="og:url" content="http://shop.example.com/product/SA-001" /&amp;gt;
+    &amp;lt;meta property="og:title" content="Reebok Shaq Attaq" /&amp;gt; 
+    
+    &amp;lt;!-- Twitter Card --&amp;gt;
+    &amp;lt;meta name="twitter:card" content="product" /&amp;gt;
+    &amp;lt;meta name="twitter:creator" content="@exampleStore"&amp;gt;
+    &amp;lt;meta name="twitter:url" content="http://shop.example.com/product/SA-001" /&amp;gt;
+    &amp;lt;meta name="twitter:title" content="Reebok Shaq Attaq" /&amp;gt;
+    &amp;lt;meta name="twitter:description" content="Limited edition Shaquille O'neil basketball shoes." /&amp;gt;
+    &amp;lt;meta name="twitter:image:src" content="http://shop.example.com/images/store/SA-001.jpg" /&amp;gt; 
+    
+    &amp;lt;!-- Pintrest Rich Pin --&amp;gt;
+    &amp;lt;meta property="og:title" content="Reebok Shaq Attaq" /&amp;gt;
+    &amp;lt;meta property="og:description" content="Limited edition Shaquille O'neil basketball shoes." /&amp;gt;
+    &amp;lt;meta property="og:url" content="http://shop.example.com/product/SA-001" /&amp;gt;
+    &amp;lt;meta property="og:image" content="http://shop.example.com/images/store/SA-001.jpg" /&amp;gt;
+    &amp;lt;meta property="og:site_name" content="Example Store" /&amp;gt;
+    &amp;lt;meta property="og:price:amount" content="119.00" /&amp;gt;
+    &amp;lt;meta property="og:price:standard_amount" content="159.00" /&amp;gt;
+    &amp;lt;meta property="og:price:currency" content="USD" /&amp;gt;
+    &amp;lt;meta property="og:availability" content="instock" /&amp;gt;
+    &amp;lt;meta property="og:see_also" content="http://shop.example.com/product/SA-001" /&amp;gt;
+    &amp;lt;meta property="og:rating" content="4.5" /&amp;gt;
+    &amp;lt;meta property="og:rating_scale" content="5" /&amp;gt;
+    &amp;lt;meta property="og:rating_count" content="33" /&amp;gt;
+    &amp;lt;meta property="product:gender" content="Men" /&amp;gt;
+    &amp;lt;meta property="product:color" content="White and Blue" /&amp;gt;
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    
+    &amp;lt;p&amp;gt;Hello world! This is HTML5 Boilerplate with social sharing meta tags.&amp;lt;/p&amp;gt;
+
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also download or copy the bare bones &lt;a href="https://gist.github.com/tgdev/8365308"&gt;Gist&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So get adding and start sharing!&lt;/p&gt;
+
+&lt;p&gt;T&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Resolution &amp;#35;9</title>
+    <link rel="alternate" href="http://tgdev.github.io/blog/2014-01-01-resolution-9/"/>
+    <id>http://tgdev.github.io/blog/2014-01-01-resolution-9/</id>
+    <published>2013-12-31T13:00:00Z</published>
+    <updated>2015-04-01T22:51:38+11:00</updated>
+    <content type="html">&lt;p&gt;It’s really quite simple: do more.&lt;/p&gt;
+
+&lt;p&gt;I feel the need to participate and put myself out there more than I have in the past.&lt;/p&gt;
+
+&lt;p&gt;To quote weezer:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;I don’t wanna be an old man anymore / 
+It’s been a year or two since I was out on the floor / 
+Shakin’ booty, makin’ sweet love all the night / 
+It’s time I got back to the Good Life / 
+It’s time I got back, it’s time I got back / 
+And I don’t even know how I got off the track / 
+I wanna go back…Yeah!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;So that means more;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;blogging&lt;/li&gt;
+  &lt;li&gt;reading&lt;/li&gt;
+  &lt;li&gt;basketball&lt;/li&gt;
+  &lt;li&gt;travel&lt;/li&gt;
+  &lt;li&gt;time with friends&lt;/li&gt;
+  &lt;li&gt;learning new skills&lt;/li&gt;
+  &lt;li&gt;challenging myself&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hopefully this blog will help achieve a lot of the above.&lt;/p&gt;
+
+&lt;p&gt;Happy new year!&lt;/p&gt;
+
+&lt;p&gt;T&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Page Alive!</title>
+    <link rel="alternate" href="http://tgdev.github.io/blog/2013-12-31-page-alive/"/>
+    <id>http://tgdev.github.io/blog/2013-12-31-page-alive/</id>
+    <published>2013-12-30T13:00:00Z</published>
+    <updated>2015-04-01T22:51:38+11:00</updated>
+    <content type="html">&lt;p&gt;I first stumbled across &lt;a href="http://middlemanapp.com/basics/dynamic-pages/"&gt;Middleman’s dynamic pages&lt;/a&gt; feature on a freelance project I was working on for a friend of mine. The site was for a local event manager who wanted to showcase several (I think it was about 10) of their most recent events.&lt;/p&gt;
+
+&lt;p&gt;Now I’m not a huge fan of manual coding and always look for ways to automate or reuse code so I really didn’t want to have to manually create all those pages.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately the Middleman demo is a little basic for what I needed but luckily for me with a bit of digging and some communication back and forth with one of Middleman’s contributors, &lt;a href="http://benhollis.net/about/"&gt;Ben Hollis&lt;/a&gt;, I discovered the true power of dynamic pages.&lt;/p&gt;
+
+&lt;p&gt;Like I mentioned in the intro, all you need is 3 key ingredients; a data file, a template and a couple of lines in your &lt;code&gt;config.rb&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Here’s how I have implemented it.&lt;/p&gt;
+
+&lt;h2 id="data-file"&gt;1. Data file&lt;/h2&gt;
+&lt;p&gt;On the same level as my source (and eventually build) directories I created a &lt;code&gt;data&lt;/code&gt; directory. Within my newly created data directory I created a new YAML file called &lt;code&gt;projects.yml&lt;/code&gt; (Middleman also supports JSON data).&lt;/p&gt;
+
+&lt;p&gt;This YAML file contained all the data properties of a project and was to be used for looping through and outputting each project’s details into a template.&lt;/p&gt;
+
+&lt;p&gt;Let’s say each project has a client, title, description and list of event manager’s responsibilities.&lt;/p&gt;
+
+&lt;p&gt;Our &lt;code&gt;projects.yml&lt;/code&gt; file looks something like this;&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;  - client: client1
+    title: "First project"
+    description: "This is a description of the 1st project."
+    responsibilities:
+      "&amp;lt;li&amp;gt;catering&amp;lt;/li&amp;gt;
+      &amp;lt;li&amp;gt;venue management&amp;lt;/li&amp;gt;
+      &amp;lt;li&amp;gt;event staffing&amp;lt;/li&amp;gt;"
+  
+  - client: client2
+    title: "Second project"
+    description: "This is a description of the 2nd project."
+    responsibilities:
+      "&amp;lt;li&amp;gt;catering&amp;lt;/li&amp;gt;"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="template"&gt;2. Template&lt;/h2&gt;
+&lt;p&gt;In my project (within the source directory) I created a new directory called &lt;code&gt;projects&lt;/code&gt; (as this is what I was going to be displaying). Inside the projects directory I created &lt;code&gt;template.html.erb&lt;/code&gt;. This file is to be referenced in &lt;code&gt;config.rb&lt;/code&gt; as the template to use for generating the individual project pages.&lt;/p&gt;
+
+&lt;p&gt;The template looks like this;&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;&amp;lt;% p = locals[:project] %&amp;gt;
+&amp;lt;div class="l-wrapper"&amp;gt;
+  &amp;lt;div class="l-content"&amp;gt;
+    &amp;lt;h2&amp;gt;&amp;lt;%= p[:title] %&amp;gt;&amp;lt;/h2&amp;gt;
+    &amp;lt;%= p[:description] %&amp;gt;
+    &amp;lt;p class="highlight"&amp;gt;Key responsibilities:&amp;lt;/p&amp;gt;
+    &amp;lt;ul class="itemised-list"&amp;gt;
+	    &amp;lt;%= p[:responsibilities] %&amp;gt;
+    &amp;lt;/ul&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Don’t worry about the &lt;code&gt;&amp;lt;% p = locals[:project] %&amp;gt;&lt;/code&gt; at the top of the file, locals[:project] is defined in &lt;code&gt;config.rb&lt;/code&gt; and will be explained in the next section.&lt;/p&gt;
+
+&lt;p&gt;‘p’ stores the project data object and is then used to access each property of the project such as title, description and the list of responsibilities.&lt;/p&gt;
+
+&lt;h2 id="configuration"&gt;3. Configuration&lt;/h2&gt;
+&lt;p&gt;The final piece of the puzzle lies in the &lt;code&gt;config.rb&lt;/code&gt; file with this block;&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;data.projects.each do |pd|
+  proxy "/projects/#{pd[:client]}.html", "/projects/template.html", :layout =&amp;gt; :popup, :locals =&amp;gt; { :project =&amp;gt; pd }, :ignore =&amp;gt; true
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;What this block is doing is as follows;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;data.projects.each do |pd|&lt;/strong&gt; is looping through each project item in &lt;code&gt;projects.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;proxy&lt;/strong&gt; is creating a dummy url using the client property of the project item within &lt;code&gt;projects.yml&lt;/code&gt; and is being passed the template file in the projects directory. eg: “www.site.com/projects/client1.html”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;layout&lt;/strong&gt; is pointing to a custom layout which resides in the &lt;code&gt;layouts&lt;/code&gt; directory and is different from the standard site layout.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;You can also set layout to false if your template has all the html in it (rather than using partial includes)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;locals&lt;/strong&gt; is what passes the data in &lt;code&gt;project.yml&lt;/code&gt; to the template (remember p = locals[:projects])&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ignore&lt;/strong&gt; tells middleman not to create a html file for template.html.erb as we only want html files for each of the projects.&lt;/p&gt;
+
+&lt;p&gt;So once that’s all setup all you need to do is fire up middleman server and test it out by going to; http://localhost:4567/projects/client1.html&lt;/p&gt;
+
+&lt;p&gt;This really is a handy feature and you can get pretty creative with what you store in your data files and how you render that data in the template. Also, remember if you’re not too keen on YAML, Middleman also supports JSON.&lt;/p&gt;
+
+&lt;p&gt;So go nuts and start adding dynamic pages to your not-so-static Middleman site!&lt;/p&gt;
+
+&lt;p&gt;T&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Page by numbers</title>
+    <link rel="alternate" href="http://tgdev.github.io/blog/2013-12-30-page-by-numbers/"/>
+    <id>http://tgdev.github.io/blog/2013-12-30-page-by-numbers/</id>
+    <published>2013-12-29T13:00:00Z</published>
+    <updated>2015-04-01T22:51:38+11:00</updated>
+    <content type="html">&lt;h2 id="configuration"&gt;Configuration.&lt;/h2&gt;
+
+&lt;p&gt;Inside the &lt;code&gt;activate:blog do |blog|&lt;/code&gt; block of my &lt;code&gt;config.rb&lt;/code&gt; file, I added the following pagination settings;&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;blog.paginate = true
+blog.page_link = "page:num"
+blog.per_page = 5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Although they’re pretty straight forward, demos and explainations of the above settings can be found in the &lt;a href="http://middlemanapp.com/basics/blogging/#toc_10"&gt;Middleman docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="template"&gt;Template.&lt;/h2&gt;
+
+&lt;p&gt;This is where I had a little difficulty.&lt;/p&gt;
+
+&lt;p&gt;In order for pagnination to work after setting up pagination in &lt;code&gt;config.rb&lt;/code&gt;, I needed to add in a little frontmatter tag to the top of the template I wanted to paginate. This is very important. Forget to include this and the rest of the code is useless.&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;---
+pageable: true
+---
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add this to the top of any template you want to use pagination on. The homepage of my site is the only place I require any pagination for the time being so I added this to top of the &lt;code&gt;index.html.erb&lt;/code&gt; file in the root of my site.&lt;/p&gt;
+
+&lt;p&gt;This essentially tells middleman that we want to split up the contents of this site into manageable pages. Middleman then uses the settings in your &lt;code&gt;config.rb&lt;/code&gt; file to figure out how many items per page.&lt;/p&gt;
+
+&lt;h3 id="show-me-the-pages"&gt;Show me the pages&lt;/h3&gt;
+&lt;p&gt;So after configuring and enabling pagination on my site I needed to output the markup. I opted for a fairly simple pagination pattern that shows “Articles X to Y of Z” with next (newer) and previous (older) navigation. To do this I needed to use some of Middleman’s built-in pagination variables;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;page_start&lt;/li&gt;
+  &lt;li&gt;page_end&lt;/li&gt;
+  &lt;li&gt;prev_page&lt;/li&gt;
+  &lt;li&gt;prev_page.url&lt;/li&gt;
+  &lt;li&gt;next_page&lt;/li&gt;
+  &lt;li&gt;next_page.url&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The final code snippet looks like this;&lt;/p&gt;
+
+&lt;pre class="code--block"&gt;&lt;code&gt;&amp;lt;div class="article pagination"&amp;gt;
+  &amp;lt;p class="pagination__summary"&amp;gt;Articles &amp;lt;%= page_start %&amp;gt; to &amp;lt;%= page_end %&amp;gt; of &amp;lt;%= articles.length %&amp;gt;&amp;lt;/p&amp;gt;
+  &amp;lt;ul class="list--clean list--pagination"&amp;gt;
+    &amp;lt;% if prev_page %&amp;gt;
+      &amp;lt;li class="prev"&amp;gt;
+        &amp;lt;a href="&amp;lt;%= prev_page.url %&amp;gt;"&amp;gt;Older articles&amp;lt;/a&amp;gt;
+      &amp;lt;/li&amp;gt;
+    &amp;lt;% end %&amp;gt;
+    &amp;lt;% if next_page %&amp;gt;
+      &amp;lt;li class="next"&amp;gt;
+        &amp;lt;a href="&amp;lt;%= next_page.url %&amp;gt;"&amp;gt;Newer articles&amp;lt;/a&amp;gt;
+      &amp;lt;/li&amp;gt;
+    &amp;lt;% end %&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So there you have it, pagination on a static site thanks to Middleman. Hopefully that helps clear things up for some people looking to achieve the same or a similar result.&lt;/p&gt;
+
+&lt;p&gt;T&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>The bells and the whistles</title>
+    <link rel="alternate" href="http://tgdev.github.io/blog/2013-12-29-the-bells-and-the-whistles/"/>
+    <id>http://tgdev.github.io/blog/2013-12-29-the-bells-and-the-whistles/</id>
+    <published>2013-12-28T13:00:00Z</published>
+    <updated>2015-04-01T22:51:38+11:00</updated>
+    <content type="html">&lt;p&gt;The &lt;a href="http://middlemanapp.com/basics/blogging/"&gt;Middleman docs on blogging&lt;/a&gt; have a lot of great info to get you started with building your own blog using middleman but if you want more of a step by step how-to, &lt;a href="http://designbyjoel.com/"&gt;Design by Joel&lt;/a&gt; has a really great article on &lt;a href="http://designbyjoel.com/blog/2012-10-20-building-a-blog-in-middleman/"&gt;building a blog in middleman&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+
+&lt;p&gt;T&lt;/p&gt;
+</content>
+  </entry>
+</feed>

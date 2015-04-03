@@ -1,0 +1,49 @@
+<!DOCTYPE html> <!--[if lt IE 7]><html lang=en class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]--> <!--[if IE 7]><html lang=en class="no-js lt-ie9 lt-ie8"><![endif]--> <!--[if IE 8]><html lang=en class="no-js lt-ie9"><![endif]--> <!--[if IE 9]><html lang=en class="no-js lt-ie10" lang=en><![endif]--> <!--[if gt IE 9]><!--> <html lang=en class=no-js> <!--<![endif]--> <head> <meta charset=utf-8 /> <!--[if lt IE 9]><meta http-equiv=X-UA-Compatible content="IE=edge"/><![endif]--> <title>You're doing it Peter! | Tom Gillard - Melbourne web designer/developer</title> <meta name=viewport content="width=device-width, initial-scale=1.0"/> <meta name=HandheldFriendly content=True /> <meta name=MobileOptimized content=320 /> <link rel=apple-touch-icon-precomposed sizes=144x144 href="/img/core/apple-touch-icon-144x144-precomposed.png"/> <link rel=apple-touch-icon-precomposed sizes=114x114 href="/img/core/apple-touch-icon-114x114-precomposed.png"/> <link rel=apple-touch-icon-precomposed sizes=72x72 href="/img/core/apple-touch-icon-72x72-precomposed.png"/> <link rel=apple-touch-icon-precomposed sizes=57x57 href="/img/core/apple-touch-icon-72x72-precomposed.png"/> <link rel=apple-touch-icon-precomposed href="/img/core/apple-touch-icon-precomposed.png"/> <link rel="shortcut icon" href="/favicon.ico"/> <link href="/css/style.css" media=screen rel=stylesheet /> <meta name=description content=""/> <meta property="og:image" content="/img/elements/profile-large.png"/> <meta property="og:site_name" content="Tom Gillard"/> <meta property="og:type" content=blog /> <meta property="og:url" content="http://tomgillard.com/blog/2013-09-08-youre-doing-it-peter/"/> <meta property="og:title" content="You're doing it Peter!"/> <meta name="twitter:card" content=summary /> <meta name="twitter:creator" content="@tom_gillard"> <meta name="twitter:url" content="http://tomgillard.com/blog/2013-09-08-youre-doing-it-peter/"> <meta name="twitter:title" content="You're doing it Peter!"> <meta name="twitter:description" content="So here it is; my very own blog site. This debut post is dedicated to discussing a few new techniques I tried during the development process."> <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]--> </head> <body id=js-smooth-state class=m-scene> <!--[if lt IE 8]><p class=chromeframe>You are using an outdated browser. <a href="//browsehappy.com/">Upgrade your browser today</a> or <a href="//www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p><![endif]--> <a href="#main" role=link title="Skip to main content" class=skipNavigation>Skip to main content</a> <header id=top class=header role=banner> <div class="container scene_element scene_element--fadeindown"> <a href="#site-nav" class="mobile-menu-btn mobile-menu-btn--open is-small small-txt">Menu</a> <div class=logo> <a href="/" title=home> <p class=logo__title><strong>Tom Gillard</strong></p> </a> </div> <nav id=site-nav class=nav role=navigation> <h2 class=outline-title>Primary Navigation</h2> <ul class=main-menu role=menu> <li role=menuitem class="mobile-menu-btn mobile-menu-btn--close is-small"><a href="#" class=small-txt>Close X</a></li> <li class=first role=menuitem> <a title="View articles" href="/">Blog</a> </li> <li role=menuitem> <a title="Browse by topic" href="/blog/topics">Topics</a> </li> <li class=last role=menuitem> <a title="About me" href="/about">About</a> </li> </ul> </nav> </div> </header> <div class=page-heading__wrapper> <div class=container> <h1 class=page-heading__title>You're doing it Peter!</h1> <time datetime=2013-09-08 pubdate class=page-heading__tagline>September 8, 2013</time> </div> </div> <div id=main class=main role=main> <div class=container> <article class="article article--full" role=article> <p class=article__intro>So here it is; my very own blog site. This debut post is dedicated to discussing a few new techniques I tried during the development process.</p> <div class=article__content> <h2 id=my-what-big-words-you-have>My, what big words you have.</h2> <p>I’ve been an advocate for <a href="//alistapart.com/article/responsive-web-design">responsive web design</a> in the last few projects I’ve worked on and one thing I really have trouble with is typography. I agree with <a href="//csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/">Harry Roberts</a> and find it helpful to preset your font sizes, testing them out in a digital styleguide or standard content page. As well as this I wanted to take it a step further and try out something that I read on <a href="//trentwalton.com/2012/06/19/fluid-type/">Trent Walton’s blog</a> where the font size for the entire site is scaled based on a variety of breakpoints.</p> <p>I was able to achieve this by applying a percentage (%) based value to the body element within a bunch of predetermined breakpoints (these are written using Sass using variables and mixins, so I’ve just included the outputted css below).</p> <pre class=code--block><code>body {
+  font-size: 100%;
+  line-height: 1.4;
+}
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 112.5%;
+    line-height: 1.6;
+  }
+}
+@media screen and (min-width: 800px) {
+  body {
+    font-size: 125%;
+    line-height: 1.6;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 150%;
+  }
+}
+</code></pre> <h2 id=loosey-goosey>Loosey Goosey</h2> <p>The other major thing I wanted to try was breaking out of the 960 grid and make things more fluid. I’ve tinkered with a variety of grid frameworks such as; <a href="//foundation.zurb.com/">Foundation</a>, <a href="//getbootstrap.com/">Bootstrap</a> and <a href="//inuitcss.com/">inuit</a>, with my most preferred being <a href="//susy.oddbird.net/">Susy</a>. When starting development on this blog, I began using Susy but found that I was too constricted to it’s rules and soon ran into issues when it came to fluid breakpoints.</p> <p>Realising the design only really calls for a single column with the exception of the little profile image in the footer, I threw it all out and simply set varying container widths at each breakpoint (If I find that I need to split the content into more than one column, I’ll create those styles as I need them).</p> <pre class=code--block><code>.container {
+  @extend %cf;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+
+  @include respond-to($desk) { // 800px / 16px
+    width: 86%;
+  }
+}
+
+.article {
+  @include respond-to($desk) {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</code></pre> <p>And voila! A nice little fluid blog that scales quite nicely.</p> <p>T</p> </div> <p> <strong>TOPICS:</strong> <a href="/blog/topics/responsive">responsive</a> <a href="/blog/topics/setup">setup</a> </p> </article> <ul class="list--clean list--article-nav"> <li class=next> <a href="/blog/2013-10-06-a-rested-development/" title="Next article"><span class=is-small--inline>Next Article</span> &#187;</a> </li> </ul> </div> </div> <footer class=footer role=contentinfo> <div class=container> <div class=blurb> <div class=media> <img src="/img/elements/profile-mini.svg" onerror="this.onerror=null; this.src='/img/elements/profile-mini.png'" alt="" class="media__image blurb__headshot"/> <div class="media__body blurb__content"> <p>I'm Tom, a front end developer from Melbourne Australia.</p> <p>The thoughts and opinions on this site are all mine.</p> </div> </div> </div> <small>&copy; 2015 Tom Gillard.</small> <small class=is-large>Built with <a href="//middlemanapp.com" target=_blank>Middleman</a> using the <a href="//smacss.com/" target=_blank>SMACSS</a> css architecture.</small> <small id=contact>Feel free to grab the <a href="/feed.xml">feed</a> and/or <a href="//twitter.com/tom_gillard" target=_blank>follow me on Twitter</a>.</small> </div> </footer> <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <script>!window.jQuery && document.write(unescape('%3Cscript src="/js/libs/jquery-1.9.1.min.js"%3E%3C/script%3E'));</script> <script src="js/site-scripts.js"></script> <script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-27423893-2']);
+			_gaq.push(['_trackPageview']);
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script> </body> </html>
