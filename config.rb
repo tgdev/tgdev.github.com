@@ -164,12 +164,3 @@ configure :build do
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end
-
-###
-# Deployment settings - Github user page (http://tgdev.github.com/)
-###
-# activate :deploy do |deploy|
-#   deploy.method = :git
-#   deploy.build_before = true
-#   deploy.branch = "master"
-# end
