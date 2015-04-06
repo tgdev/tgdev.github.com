@@ -2,20 +2,24 @@
 
 	<a href="#main" role="link" title="Skip to main content" class="skipNavigation">Skip to main content</a>
 
-	<%= partial "HTML_Partials/global/header" %>
+	<div id="js-smooth-state" class="m-scene">
 
-    <%= partial "HTML_Partials/page-heading" %>
+		<%= partial "HTML_Partials/global/header" %>
 
-    	<div id="main" class="main scene_element scene_element--fadeinup" role="main">
+	    <%= partial "HTML_Partials/page-heading" %>
 
-    		<div class="container">
+	    	<main class="main scene_element scene_element--fadeinup">
 
-    			<%= yield %>
+	    		<div class="container">
 
-    		</div>
+	    			<%= yield %>
 
-        </div>
+	    		</div>
 
-	<%= partial "HTML_Partials/global/footer" %>
+	        </main>
+
+		<%= partial "HTML_Partials/global/footer" %>
+
+	</div>
 
 <%= partial "HTML_Partials/global/foot" %>

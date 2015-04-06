@@ -3,9 +3,6 @@ tg.common = {
 
 	init: function() {
 
-		// setup fitvids plugin
-		$('.article__content').fitVids();
-
 		// page transitions
 		var content  = $('#js-smooth-state').smoothState({
         	// onStart runs as soon as link has been activated
@@ -13,6 +10,8 @@ tg.common = {
 
           		// Set the duration of our animation
           		duration: 250,
+
+              development: true,
 
           		// Alterations to the page
           		render: function () {
@@ -24,4 +23,5 @@ tg.common = {
 		}).data('smoothState'); // makes public methods available
 
 	}
+
 };
