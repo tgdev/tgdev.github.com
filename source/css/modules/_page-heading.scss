@@ -8,10 +8,14 @@
 
 .page-heading__title {
 	margin: 0;
-	font-family: $title-text;
+	font-family: $base-title-text;
 	@include font-size(80px);
 	text-shadow: 4px 5px 0px black;
 	line-height: 1;
+
+	.fonts-loaded & {
+		font-family: $custom-title-text;
+	}
 }
 
 .page-heading__tagline {
