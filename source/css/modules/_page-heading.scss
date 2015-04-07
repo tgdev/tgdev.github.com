@@ -33,7 +33,7 @@
 		@include rem(padding, 65px 0 50px);
 	}
 
-	.page-heading__title {
+	.fonts-loaded .page-heading__title {
 		@include font-size(100px);
 	}
 }

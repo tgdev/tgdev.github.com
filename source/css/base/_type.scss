@@ -7,8 +7,8 @@
     font-style: normal;
 }
 
-$base-title-text: "Impact", sans-serif;
-$custom-title-text: "LeagueGothicReg", "Impact", sans-serif;
+$base-title-text: "Arial Narrow", sans-serif;
+$custom-title-text: "LeagueGothicReg", "Arial Narrow", sans-serif;
 
 h1, .alpha{
     @include font-size($h1-size);
