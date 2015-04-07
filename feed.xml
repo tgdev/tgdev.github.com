@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://tgdev.github.io/blog/2014-01-21-ruby-sass-vs-node-sass/"/>
     <id>http://tgdev.github.io/blog/2014-01-21-ruby-sass-vs-node-sass/</id>
     <published>2014-01-20T13:00:00Z</published>
-    <updated>2015-01-12T07:29:43+11:00</updated>
+    <updated>2015-04-02T11:59:48+11:00</updated>
     <content type="html">&lt;p&gt;&lt;a href="http://libsass.org/"&gt;Libsass&lt;/a&gt; is a C port of the original Sass engine to offer the power of Sass without being tied to Ruby.&lt;/p&gt;
 
 &lt;p&gt;Now I work in Windows and Ruby can be a bit of a pain so I’m more than keen to give the new kid on the block a go.&lt;/p&gt;
@@ -114,7 +114,7 @@
     <link rel="alternate" href="http://tgdev.github.io/blog/2014-01-11-social-media-meta-tags/"/>
     <id>http://tgdev.github.io/blog/2014-01-11-social-media-meta-tags/</id>
     <published>2014-01-10T13:00:00Z</published>
-    <updated>2015-01-12T07:29:43+11:00</updated>
+    <updated>2015-04-02T11:59:48+11:00</updated>
     <content type="html">&lt;p&gt;With so many people using social media these days, it seems only logical to include the snippets below on all of our sites.&lt;/p&gt;
 
 &lt;h2 id="facebook-open-graph"&gt;Facebook Open Graph&lt;/h2&gt;
@@ -223,7 +223,7 @@
     <link rel="alternate" href="http://tgdev.github.io/blog/2014-01-01-resolution-9/"/>
     <id>http://tgdev.github.io/blog/2014-01-01-resolution-9/</id>
     <published>2013-12-31T13:00:00Z</published>
-    <updated>2015-04-01T22:51:38+11:00</updated>
+    <updated>2015-04-02T11:59:48+11:00</updated>
     <content type="html">&lt;p&gt;It’s really quite simple: do more.&lt;/p&gt;
 
 &lt;p&gt;I feel the need to participate and put myself out there more than I have in the past.&lt;/p&gt;
@@ -264,7 +264,7 @@ I wanna go back…Yeah!&lt;/p&gt;
     <link rel="alternate" href="http://tgdev.github.io/blog/2013-12-31-page-alive/"/>
     <id>http://tgdev.github.io/blog/2013-12-31-page-alive/</id>
     <published>2013-12-30T13:00:00Z</published>
-    <updated>2015-04-01T22:51:38+11:00</updated>
+    <updated>2015-04-02T11:59:48+11:00</updated>
     <content type="html">&lt;p&gt;I first stumbled across &lt;a href="http://middlemanapp.com/basics/dynamic-pages/"&gt;Middleman’s dynamic pages&lt;/a&gt; feature on a freelance project I was working on for a friend of mine. The site was for a local event manager who wanted to showcase several (I think it was about 10) of their most recent events.&lt;/p&gt;
 
 &lt;p&gt;Now I’m not a huge fan of manual coding and always look for ways to automate or reuse code so I really didn’t want to have to manually create all those pages.&lt;/p&gt;
@@ -357,7 +357,7 @@ end
     <link rel="alternate" href="http://tgdev.github.io/blog/2013-12-30-page-by-numbers/"/>
     <id>http://tgdev.github.io/blog/2013-12-30-page-by-numbers/</id>
     <published>2013-12-29T13:00:00Z</published>
-    <updated>2015-04-01T22:51:38+11:00</updated>
+    <updated>2015-04-02T11:59:48+11:00</updated>
     <content type="html">&lt;h2 id="configuration"&gt;Configuration.&lt;/h2&gt;
 
 &lt;p&gt;Inside the &lt;code&gt;activate:blog do |blog|&lt;/code&gt; block of my &lt;code&gt;config.rb&lt;/code&gt; file, I added the following pagination settings;&lt;/p&gt;
@@ -425,7 +425,7 @@ pageable: true
     <link rel="alternate" href="http://tgdev.github.io/blog/2013-12-29-the-bells-and-the-whistles/"/>
     <id>http://tgdev.github.io/blog/2013-12-29-the-bells-and-the-whistles/</id>
     <published>2013-12-28T13:00:00Z</published>
-    <updated>2015-04-01T22:51:38+11:00</updated>
+    <updated>2015-04-02T11:59:48+11:00</updated>
     <content type="html">&lt;p&gt;The &lt;a href="http://middlemanapp.com/basics/blogging/"&gt;Middleman docs on blogging&lt;/a&gt; have a lot of great info to get you started with building your own blog using middleman but if you want more of a step by step how-to, &lt;a href="http://designbyjoel.com/"&gt;Design by Joel&lt;/a&gt; has a really great article on &lt;a href="http://designbyjoel.com/blog/2012-10-20-building-a-blog-in-middleman/"&gt;building a blog in middleman&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Enjoy!&lt;/p&gt;
