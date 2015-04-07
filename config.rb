@@ -1,5 +1,5 @@
 @siteName = "Tom Gillard"
-@siteUrl = "http://tomgillard.com"
+@siteUrl = "http://www.tomgillard.com"
 
 # silence i18n warning
 ::I18n.config.enforce_available_locales = false
