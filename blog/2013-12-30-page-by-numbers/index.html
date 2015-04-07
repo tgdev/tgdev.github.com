@@ -20,7 +20,6 @@ pageable: true
   &lt;/ul&gt;
 &lt;/div&gt;
 </code></pre> <p>So there you have it, pagination on a static site thanks to Middleman. Hopefully that helps clear things up for some people looking to achieve the same or a similar result.</p> <p>T</p> </div> <p> <strong>TOPICS:</strong> <a href="/blog/topics/setup">setup</a> <a href="/blog/topics/middleman">middleman</a> </p> </article> <ul class="list--clean list--article-nav"> <li class=prev> <a href="/blog/2013-12-29-the-bells-and-the-whistles/" title="Previous article">&#171; <span class=is-small--inline>Previous Article</span></a> </li> <li class=next> <a href="/blog/2013-12-31-page-alive/" title="Next article"><span class=is-small--inline>Next Article</span> &#187;</a> </li> </ul> </div> </main> <footer class=footer role=contentinfo> <div class=container> <div class=blurb> <div class=media> <img src="/img/elements/profile-mini.svg" onerror="this.onerror=null; this.src='/img/elements/profile-mini.png'" alt="" class="media__image blurb__headshot"/> <div class="media__body blurb__content"> <p>I'm Tom, a front end developer from Melbourne Australia.</p> <p>The thoughts and opinions on this site are all mine.</p> </div> </div> </div> <small>&copy; 2015 Tom Gillard.</small> <small class=is-large>Built with <a href="//middlemanapp.com" target=_blank>Middleman</a> using the <a href="//smacss.com/" target=_blank>SMACSS</a> css architecture.</small> <small id=contact>Feel free to grab the <a href="/feed.xml">feed</a> and/or <a href="//twitter.com/tom_gillard" target=_blank>follow me on Twitter</a>.</small> </div> </footer> </div> <script>
-
 			/*! fontfaceobserver v1.4.3 (c) Bram Stein - https://github.com/bramstein/fontfaceobserver */
 			(function(){'use strict';function f(a){this.a=k;this.b=void 0;this.d=[];var b=this;try{a(function(a){l(b,a)},function(a){m(b,a)})}catch(c){m(b,c)}}var k=2;function n(a){return new f(function(b,c){c(a)})}function p(a){return new f(function(b){b(a)})}
 			function l(a,b){if(a.a===k){if(b===a)throw new TypeError("Promise resolved with itself.");var c=!1;try{var d=b&&b.then;if(null!==b&&"object"===typeof b&&"function"===typeof d){d.call(b,function(b){c||l(a,b);c=!0},function(b){c||m(a,b);c=!0});return}}catch(e){c||m(a,e);return}a.a=0;a.b=b;q(a)}}function m(a,b){if(a.a===k){if(b===a)throw new TypeError("Promise rejected with itself.");a.a=1;a.b=b;q(a)}}
@@ -51,17 +50,18 @@ pageable: true
 
 			})(this);
 		</script> <script>
-		+    // Add a script element as a child of the body
-		+    function downloadJSAtOnload() {
-		+    	var element = document.createElement('script');
-		+    	element.src = 'js/site-scripts.js';
-		+    	document.body.appendChild(element);
-		+    }
-		+
-		+    // Check for browser support of event handling capability
-		+    if (window.addEventListener)
-			+    window.addEventListener('load', downloadJSAtOnload, false);
-		+    else if (window.attachEvent)
-		+    	window.attachEvent('onload', downloadJSAtOnload);
-		+    else window.onload = downloadJSAtOnload;
+		    // Add a script element as a child of the body
+		    function downloadJSAtOnload() {
+		    	var element = document.createElement('script');
+		    	element.src = 'js/site-scripts.js';
+		    	document.body.appendChild(element);
+		    }
+		    // Check for browser support of event handling capability
+		    if (window.addEventListener) {
+			    window.addEventListener('load', downloadJSAtOnload, false);
+		    } else if (window.attachEvent) {
+		    	window.attachEvent('onload', downloadJSAtOnload);
+		    } else {
+		    	window.onload = downloadJSAtOnload;
+		    }
 		</script> <script>var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-27423893-2']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script> </body> </html>
