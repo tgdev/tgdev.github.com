@@ -14,15 +14,17 @@
 }
 
 html{
-    overflow-y:scroll;
+    // overflow-y:scroll;
     min-height:100%;
     width: 100%;
-  	color: $base-font-color;
 }
 
 body {
 
   font: 100%/1.4 $base-font-family;
+  -webkit-backface-visibility: hidden;
+  background-color: #DAD4C8;
+  color: $base-font-color;
 
   @include respond-to($lap-start) {
     font-size: 112.5%;

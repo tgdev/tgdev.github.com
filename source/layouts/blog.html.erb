@@ -11,17 +11,18 @@
     <meta name="twitter:description" content="<%= current_article.data.intro %>">
 <% end %>
 
+
 <%= partial "HTML_Partials/global/head" %>
 
-<a href="#main" role="link" title="Skip to main content" class="skipNavigation">Skip to main content</a>
+<a href="#content" role="link" title="Skip to main content" class="skipNavigation">Skip to main content</a>
 
-<div id="js-smooth-state" class="m-scene">
+<div id="main" class="m-scene">
 
 	<%= partial "HTML_Partials/global/header" %>
 
-	<div class="page-heading__wrapper scene_element scene_element--fadeinright">
+	<div class="page-heading__wrapper">
 
-		<div class="container">
+		<div class="container scene_element scene_element--fadeinright">
 
 			<h1 class="page-heading__title"><%= current_article.title %></h1>
 			<time datetime="<%= current_article.date.strftime('%Y-%m-%d') %>" pubdate class="page-heading__tagline"><%= current_article.date.strftime('%B %e, %Y') %></time>
@@ -30,36 +31,40 @@
 
 	</div>
 
-	<main class="main scene_element scene_element--fadeinup">
+	<div id="content" class="scene_element scene_element--fadeinup">
 
-		<div class="container">
+		<main class="main">
 
-			<article class="article article--full">
+			<div class="container">
 
-				<p class="article__intro"><%= current_article.data.intro %></p>
+				<article class="article article--full">
 
-				<div class="article__content">
+					<p class="article__intro"><%= current_article.data.intro %></p>
 
-					<%= yield %>
+					<div class="article__content">
 
-				</div>
+						<%= yield %>
 
-				<p>
-					<strong>TOPICS:</strong>
-					<% current_article.tags.each do |tag| %>
-						<a href="/blog/topics/<%= tag %>"><%= tag %></a>
-					<% end %>
-				</p>
+					</div>
 
-			</article>
+					<p>
+						<strong>TOPICS:</strong>
+						<% current_article.tags.each do |tag| %>
+							<a href="/blog/topics/<%= tag %>"><%= tag %></a>
+						<% end %>
+					</p>
 
-			<%= partial "HTML_Partials/article-nav" %>
+				</article>
 
-		</div>
+				<%= partial "HTML_Partials/article-nav" %>
 
-	</main>
+			</div>
 
-	<%= partial "HTML_Partials/global/footer" %>
+		</main>
+
+		<%= partial "HTML_Partials/global/footer" %>
+
+	</div>
 
 </div>
 

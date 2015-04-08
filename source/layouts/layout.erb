@@ -1,14 +1,17 @@
+
 <%= partial "HTML_Partials/global/head" %>
 
-	<a href="#main" role="link" title="Skip to main content" class="skipNavigation">Skip to main content</a>
+	<a href="#content" role="link" title="Skip to main content" class="skipNavigation">Skip to main content</a>
 
-	<div id="js-smooth-state" class="m-scene">
+	<div id="main" class="m-scene">
 
 		<%= partial "HTML_Partials/global/header" %>
 
 	    <%= partial "HTML_Partials/page-heading" %>
 
-	    	<main class="main scene_element scene_element--fadeinup">
+	    <div id="content" class="scene_element scene_element--fadeinup">
+
+	    	<main class="main">
 
 	    		<div class="container">
 
@@ -18,7 +21,9 @@
 
 	        </main>
 
-		<%= partial "HTML_Partials/global/footer" %>
+			<%= partial "HTML_Partials/global/footer" %>
+
+	    </div>
 
 	</div>
 

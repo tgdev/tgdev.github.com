@@ -4,21 +4,24 @@ tg.pages = (function () {
 
 	var initialize = function () {
 
-		var content = $('#js-smooth-state').smoothState({
-			// onStart runs as soon as link has been activated
-			onStart : {
-				// Set the duration of our animation
-				duration: 250,
-				// Alterations to the page
-				render: function (url, $container) {
-					console.log('SS rending page smoothly');
-					console.log('SS url: ',url);
-					console.log('SS container: ', $container);
-					// Quickly toggles a class and restarts css animations
-					content.toggleAnimationClass('is-exiting');
+		var $body = $('html, body'),
+			content = $('#main').smoothState({
+				prefetch: true,
+	            pageCacheSize: 4,
+				// onStart runs as soon as link has been activated
+				onStart : {
+					// Set the duration of our animation
+					duration: 250,
+					// Alterations to the page
+					render: function (url, $container) {
+						// Quickly toggles a class and restarts css animations
+						content.toggleAnimationClass('is-exiting');
+						$body.animate({
+                        	scrollTop: 0
+                    	});
+					}
 				}
-			}
-		}).data('smoothState'); // makes public methods available
+			}).data('smoothState'); // makes public methods available
 
 	};
 
